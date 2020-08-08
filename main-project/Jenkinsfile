@@ -11,8 +11,8 @@ pipeline {
         }
         stage('Maven Clean'){
             steps{
-		    bat 'mvn clean main-project/pom.xml'
-               
+		    bat 'mvn clean pom.xml'
+              
             }
             
         }
