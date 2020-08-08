@@ -5,7 +5,7 @@ pipeline {
     stages {
 	     stage('Git Checkout'){
             steps{
-                url: 'https://github.com/yamuna-bhavani/CI-CD-multi-project-build.git'
+               git credentialsId: 'git-id', url: 'https://github.com/yamuna-bhavani/CI-CD-multi-project-build.git'
                 print"Check out completed"
             }
         }
