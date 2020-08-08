@@ -11,11 +11,7 @@ pipeline {
         }
         stage('Maven Clean'){
             steps{
-                script{
-                    def mavenHome= tool name: 'maven3', type: 'maven'
-                    def mavenCMD= "${mavenHome}/bin/mvn"
-                    sh "${mavenCMD} compile"
-                }
+               bat 'mvn clean  main-project/pom.xml'
             }
             
         }
