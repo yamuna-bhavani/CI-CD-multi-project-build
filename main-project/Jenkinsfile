@@ -11,14 +11,24 @@ pipeline {
         }
         stage('Maven Clean'){
             steps{
-               bat 'mvn clean  main-project/pom.xml'
+		    script{
+                    def mavenHome= tool name: 'maven', type: 'maven'
+                    def mavenCMD= "${mavenHome}/bin/mvn"
+                    bat "${mavenCMD} compile  main-project/pom.xml"
+                }
+               
             }
             
         }
         
         stage('Build'){
         steps{
-            bat 'mvn install main-project/pom.xml'
+		 script{
+                    def mavenHome= tool name: 'maven', type: 'maven'
+                    def mavenCMD= "${mavenHome}/bin/mvn"
+                    bat "${mavenCMD} install  main-project/pom.xml"
+                }
+            
          }
         }
         stage('codereview-pmd') {
